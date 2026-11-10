@@ -24,14 +24,18 @@ local function createHud()
 	local gui = Instance.new("ScreenGui")
 	gui.Name = "CoinHud"
 	gui.ResetOnSpawn = false
-	gui.IgnoreGuiInset = true
+	-- false = otomatis diberi jarak dari topbar Roblox (menu, chat, leaderboard).
+	-- Kalau true, GUI akan menimpa topbar bawaan.
+	gui.IgnoreGuiInset = false
 	gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	gui.Parent = playerGui
 
 	local frame = Instance.new("Frame")
 	frame.Name = "Container"
 	frame.AnchorPoint = Vector2.new(0, 0)
-	frame.Position = UDim2.new(0, 20, 0, 20)
+	-- Ditempel di kiri-atas, TEPAT DI BAWAH topbar Roblox.
+	-- y = 0 berarti sudah di bawah inset, jadi cukup beri sedikit margin.
+	frame.Position = UDim2.new(0, 12, 0, 10)
 	frame.Size = UDim2.new(0, 170, 0, 46)
 	frame.BackgroundColor3 = Color3.fromRGB(18, 18, 26)
 	frame.BackgroundTransparency = 0.15
@@ -103,10 +107,8 @@ local function updateCoins(value: number)
 	coinLabel.Text = tostring(value)
 
 	-- Animasi "punch" kecil setiap kali bertambah
-	local originalSize = UDim2.new(0, 170, 0, 46)
 	coinLabel.TextSize = 27
 	TweenService:Create(coinLabel, TweenInfo.new(0.15, Enum.EasingStyle.Back), { TextSize = 22 }):Play()
-	coinLabel.Parent.Size = originalSize
 end
 
 coinsValue:GetPropertyChangedSignal("Value"):Connect(function()
