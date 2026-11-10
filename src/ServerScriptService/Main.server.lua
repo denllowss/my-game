@@ -1,37 +1,17 @@
 --[[
 	Main (Script / server)
-	Entry point sisi server. Jalankan logika game di sini.
+	Entry point sisi server.
 ]]
 
-local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local Leaderstats = require(script.Services.Leaderstats)
+local CoinService = require(script.Services.CoinService)
 
 print(("[Server] %s dimulai"):format(Config.GameName))
 
--- Leaderstats
-local function onPlayerAdded(player: Player)
-	local leaderstats = Instance.new("Folder")
-	leaderstats.Name = "leaderstats"
+Leaderstats.start()
+CoinService.start()
 
-	local coins = Instance.new("IntValue")
-	coins.Name = Config.Leaderstats.Coins
-	coins.Value = 0
-	coins.Parent = leaderstats
-
-	local wins = Instance.new("IntValue")
-	wins.Name = Config.Leaderstats.Wins
-	wins.Value = 0
-	wins.Parent = leaderstats
-
-	leaderstats.Parent = player
-end
-
-Players.PlayerAdded:Connect(onPlayerAdded)
-for _, player in Players:GetPlayers() do
-	onPlayerAdded(player)
-end
-
--- Penanda uji sync: kalau baris ini terlihat di Studio, pipeline sudah benar.
 print("[SYNC-TEST v2] pipeline OK — pesan ini dikirim agent lewat GitHub + Rojo")
