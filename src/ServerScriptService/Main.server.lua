@@ -32,3 +32,6 @@ Players.PlayerAdded:Connect(onPlayerAdded)
 for _, player in Players:GetPlayers() do
 	onPlayerAdded(player)
 end
+
+-- Penanda uji sync: kalau baris ini terlihat di Studio, pipeline sudah benar.
+print("[SYNC-TEST] file ini ter-update dari GitHub pada 2026-11-10")
