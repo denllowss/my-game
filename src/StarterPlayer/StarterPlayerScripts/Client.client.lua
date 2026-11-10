@@ -8,9 +8,22 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 
 local Config = require(ReplicatedStorage.Shared.Config)
-local WelcomeGui = require(script.Parent.Gui.WelcomeGui)
 
 local player = Players.LocalPlayer
+
+print("[Client] script mulai")
+
+-- Ambil modul welcome dengan aman, supaya kalau gagal kita tahu penyebabnya.
+local welcomeOk, WelcomeGui = pcall(function()
+	return require(script.Parent:WaitForChild("Gui", 5):WaitForChild("WelcomeGui", 5))
+end)
+
+if not welcomeOk then
+	warn("[Client] GAGAL require WelcomeGui: " .. tostring(WelcomeGui))
+	WelcomeGui = nil
+else
+	print("[Client] WelcomeGui ditemukan")
+end
 
 print(("[Client] Halo %s, selamat datang di %s"):format(player.Name, Config.GameName))
 
@@ -125,8 +138,16 @@ updateCoins(coinsValue.Value)
 local SHOW_WELCOME = true
 local WELCOME_DELAY = 1.2 -- detik
 
-if SHOW_WELCOME then
+if SHOW_WELCOME and WelcomeGui then
 	task.delay(WELCOME_DELAY, function()
-		WelcomeGui.show()
+		print("[Client] menampilkan WelcomeGui...")
+		local ok, err = pcall(function()
+			WelcomeGui.show()
+		end)
+		if not ok then
+			warn("[Client] GAGAL menampilkan WelcomeGui: " .. tostring(err))
+		else
+			print("[Client] WelcomeGui ditampilkan")
+		end
 	end)
 end
