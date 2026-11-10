@@ -8,6 +8,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 
 local Config = require(ReplicatedStorage.Shared.Config)
+local WelcomeGui = require(script.Parent.Gui.WelcomeGui)
 
 local player = Players.LocalPlayer
 
@@ -116,3 +117,16 @@ coinsValue:GetPropertyChangedSignal("Value"):Connect(function()
 end)
 
 updateCoins(coinsValue.Value)
+
+--[[
+	Panel sambutan: muncul sekali saat pemain masuk.
+	Ditunggu sebentar supaya tidak bertabrakan dengan loading screen Roblox.
+]]
+local SHOW_WELCOME = true
+local WELCOME_DELAY = 1.2 -- detik
+
+if SHOW_WELCOME then
+	task.delay(WELCOME_DELAY, function()
+		WelcomeGui.show()
+	end)
+end
