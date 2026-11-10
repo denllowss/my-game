@@ -34,4 +34,4 @@ for _, player in Players:GetPlayers() do
 end
 
 -- Penanda uji sync: kalau baris ini terlihat di Studio, pipeline sudah benar.
-print("[SYNC-TEST] file ini ter-update dari GitHub pada 2026-11-10")
+print("[SYNC-TEST v2] pipeline OK — pesan ini dikirim agent lewat GitHub + Rojo")
