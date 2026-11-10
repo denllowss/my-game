@@ -1,0 +1,5 @@
+# Tool manager Rokit — mengunci versi tool per-project.
+# Kalau mau versi Rojo lain, ubah baris di bawah lalu jalankan: rokit install
+
+[tools]
+rojo = "rojo-rbx/rojo@7.5.1"

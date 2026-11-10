@@ -1,0 +1,17 @@
+# Build output
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
+/out
+/build
+
+# Sourcemap (dipakai kalau pakai --include-sourcemap)
+sourcemap.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

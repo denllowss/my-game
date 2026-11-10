@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.lua": "luau",
+    "*.luau": "luau"
+  },
+  "editor.formatOnSave": true,
+  "[luau]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  },
+  "luau-lsp.sourcemap.enabled": true,
+  "luau-lsp.sourcemap.autogenerate": true,
+  "luau-lsp.sourcemap.rojoProjectFile": "default.project.json"
+}
