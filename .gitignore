@@ -3,6 +3,9 @@
 *.rbxlx
 *.rbxm
 *.rbxmx
+
+# Pengecualian: plugin Rojo harus ikut ter-commit
+!tools/plugin/Rojo.rbxm
 /out
 /build
 
