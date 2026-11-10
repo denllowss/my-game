@@ -17,6 +17,7 @@ cd my-game
 
 rokit install            # pasang Rojo sesuai rokit.toml
 rojo plugin install      # pasang plugin Rojo ke Studio
+# kalau gagal (registry error): .\tools\install-plugin.ps1
 ```
 
 **Restart Roblox Studio** setelah `rojo plugin install`. Akan muncul tombol
@@ -113,6 +114,7 @@ game-nya. Untuk hal visual, kirim screenshot ke chat.
 | `rojo : not recognized` | tutup PowerShell, buka baru. Cek `$env:Path -split ';' \| Select-String rokit` |
 | Studio: **Not Found** | `rojo serve` belum jalan. Pastikan port 34872 |
 | Tombol Rojo tak muncul | `rojo plugin install` lalu restart Studio |
+| `rojo plugin install` → "Couldn't find registry keys" | Rojo tak menemukan Studio via registry. Pakai `.	ools\install-plugin.ps1` (mencari folder Studio langsung di disk) atau install manual dari Creator Store |
 | Connection refused | firewall Windows blokir port 34872 → izinkan |
 | `.\tools\autopull.ps1` diblokir | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` |
 | Pull konflik | `git stash` lalu `git pull`, atau minta agent menyelesaikan |
