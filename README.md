@@ -45,3 +45,12 @@ rojo build -o game-saya.rbxlx
 ```
 
 Lalu buka `game-saya.rbxlx` di Studio.
+
+---
+
+## Status sync
+
+Repo: `denllowss/my-game` — tersambung ke agent Arena.
+Terakhir diuji: 2026-11-10 22:07 (WIB).
+
+Kalau baris ini muncul di PC Anda setelah `git pull`, jalur sync sudah bekerja.
